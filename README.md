@@ -40,11 +40,8 @@ The data is download from Kaggle (https://www.kaggle.com/datasets/paultimothymoo
 
 #### Frist, I tried a baseline fully connected model with differnt number of layers and number of nodes
 
-model_dense = Sequential()
-model_dense.add(layers.Dense(20, activation='relu', input_shape=(imgdim*imgdim*3,))) 
-model_dense.add(layers.Dense(16, activation='relu'))
-model_dense.add(layers.Dense(5, activation='relu'))
-model_dense.add(layers.Dense(1, activation='sigmoid'))
+
+![figure of model_dense](figures/model_dense.png)
 
 The history is shown below and the accuracy for test data is 83%
 
@@ -53,37 +50,12 @@ The history is shown below and the accuracy for test data is 83%
 
 #### Second, I tried CNN model with different settings
 
-np.random.seed(123)
-model_cnn = Sequential()
-model_cnn.add(layers.Conv2D(32, (3, 3), activation='relu', 
-                             input_shape=(imgdim,imgdim,3)))
-model_cnn.add(layers.MaxPooling2D((2, 2)))
-model_cnn.add(layers.Conv2D(32, (4, 4), activation='relu')) 
-model_cnn.add(layers.MaxPooling2D((2, 2)))
-model_cnn.add(layers.Conv2D(64, (3, 3), activation='relu'))
-model_cnn.add(layers.MaxPooling2D((2, 2)))
-#model_cnn1.add(layers.Conv2D(128, (3, 3), activation='relu'))
-#model_cnn1.add(layers.MaxPooling2D((2, 2)))
 
-model_cnn.add(layers.Flatten())
-model_cnn.add(layers.Dense(64, activation='relu')) # 20
-model_cnn.add(layers.Dense(16, activation='relu'))
-model_cnn.add(layers.Dense(5, activation='relu'))
-model_cnn.add(layers.Dense(1, activation='sigmoid'))
-model_cnn.compile(loss='binary_crossentropy',
-              optimizer="sgd",#'adam',optimizers.RMSprop(lr=1e-4),# different optimization methods
-              metrics=['acc'])
-      
-The importance of each feature is shown in the following figure: three features are the most important ones
-- customer_service_calls
-- total_day_minutes
-- international_plan
+![figure of model_cnn](figures/model_cnn.png)
 
-![figure of dtbasic_feat_import](figures/dtbasic_feat_import.png)
+The history is shown below and the accuracy for test data is 83%
 
-take a look total_day_minutes: total day minutes > 315.6, churn rate is 100%, and total day minutes < 46.5, churn rate is mostly 0
-
-![figure of churnrate_totaldaymin](figures/churnrate_totaldaymin.png)
+![figure of model_cnn_hist](figures/model_cnn_hist.png)
 
 
 #### Classification Model Comparisons using different classifiers
