@@ -53,87 +53,72 @@ The history is shown below and the accuracy for test data is 83%
 
 ![figure of model_cnn](figures/model_cnn.png)
 
-The history is shown below and the accuracy for test data is 83%
+The history is shown below and the accuracy for test data is 88%
 
 ![figure of model_cnn_hist](figures/model_cnn_hist.png)
 
+##### tried data augmentation
 
-#### Classification Model Comparisons using different classifiers
-- DecisonTreeClassifier
-- KNeighborsClassifier
-- RandomForestClassifier
-- AdaBoostClassifier
-- GradientBoostingClassifier
+The history is shown below and the accuracy for test data is 88%
 
-the performance is shown as:
+![figure of model_cnnda_hist](figures/model_cnnda_hist.png)
 
-![figure of clsmodelscmp](figures/clsmodelscmp.PNG)
+##### tried batch normalization
 
-The GradientBoostingClassifier achieves the best results, So I will use this model in the following analysis
+The history is shown below and the accuracy for test data is 90%
 
-Based on its intial parameters, I used gridsearch to find the optimal parameters
-
-param_grid = {
-    "loss":["exponential", "deviance"],
-    "learning_rate": [0.01,0.1,0.2],
-    "min_samples_split": [2,5],
-    "min_samples_leaf":[1,2,5],
-    'max_depth':[3,5]
-    }
-    
-And the obtained best parameters are:
-{'learning_rate': 0.1, 'loss': 'deviance', 'max_depth': 5, 'min_samples_leaf': 1, 'min_samples_split': 2} 
-
-and achieved the results as:
-
-GradientBoostingClassifier final:
-confusion matrix: 
- [[2135    6]
- [  40  318]]
-accuracy_score:  0.982
-recall_score:  0.888
-f1_score:  0.933
+![figure of model_cnnbn_hist](figures/model_cnnbn_hist.png)
 
 
-This result is pretty good, so I will use it as the final model to do the test.
+##### tried dropout
 
-#### Final model with GradientBoostingClassifier
+The history is shown below and the accuracy for test data is 90%
 
-- Parameters:
--loss = 'deviance'
--learning_rate = 0.1
--min_samples_leaf = 1
--min_samples_split = 2
--max_depth = 5
--SMOTE balancing
--StandardScaler
+![figure of model_cnndo_hist](figures/model_cnndo_hist.png)
 
-The performance on training and test data are:
 
-Final model for train data:
-accuracy_score:  0.98
-recall_score:  0.88
-f1_score:  0.926
+#### Third, I tried a pretained model VGG19 with the combination of above cnn model
 
-![figure of confmat_train](figures/clffinal_confmattrain.png)
+![figure of model_cnnvgg0](figures/model_cnnvgg0.png)
 
-Final model for test data:
-accuracy_score:  0.944
-recall_score:  0.736
-f1_score:  0.797
+The history is shown below and the accuracy for test data is 90%
 
-![figure of confmat_test](figures/clffinal_confmattest.png)
+![figure of model_cnnvgg0_hist](figures/model_cnnvgg0_hist.png)
 
-and the feature importance for the final model is
 
-![figure of clsfinal_featimport](figures/clffinal_feat_import.png)
+##### Tried to combine vgg19 with a more layers' cnn model
+
+The history is shown below and the accuracy for test data is 91%
+
+![figure of model_cnnvgg1_hist](figures/model_cnnvgg1_hist.png)
+
+##### Tried to use a new data augmentation for two above mentioned vgg19 models
+
+The history of the first model is shown below and the accuracy for test data is 89%
+
+![figure of model_cnnvgg0da2_hist](figures/model_cnnvgg0da2_hist.png)
+
+The history of the second model is shown below and the accuracy for test data is 91%
+
+![figure of model_cnnvgg1da2_hist](figures/model_cnnvgg1da2_hist.png)
+
+
+#### Finally, I do a model comparision across nine models with different settings
+
+The accuracy and loss is shown below:
+
+![figure of modelcomp_testlossacc](figures/modelcomp_testlossacc.png)
+
+It seems that the cnnvgg models are slight better, though they are generally similar.
+
+#### I chose cnnvgg1 as the final model to see the final classification results
+
+The confusion matrix is shown below:
+
+![figure of FinalModel_conf](figures/FinalModel_conf.png)
 
 
 ## Summary
 
-From the classification models, I found that three features affected the customer churn rate most significantly:
-- customer_service_calls: The customers with large number of service calls as 4,5,6 seems have the larger churn rate
-- international_plan: The customers with international plan have the higher churn rate
-- total_day_minutes: The customers with the total day minutes > 315.6, churn rate is 100%, and total day minutes < 46.5, churn rate is mostly 0, therefore, the company need to deal with the customers with the total day minutes     between 46.5 to 316 mins
-
-Regarding states: AZ, AK and HI have the lowest churn rate states, therefore, need to pay more attention on customers from these states
+- It achieves above 90% accuracy with the use of pretrained VGG19 model
+- With more adjustment and more data, the accuracy could be further improved
