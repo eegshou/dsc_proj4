@@ -1,6 +1,5 @@
 # Phase 4 Project
 
-
 ## Project Overview
 
 In this project, I chosen image classification of chest xray images to see whether it is belonging to a healthy person or a patient with pneumonia(https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia). 
@@ -17,11 +16,9 @@ After comparing different neural network and deep learning models with different
 * Q: What data sources are available to us?
 * A: the images were downloaded from https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 
-
 ### The Data
 
 The data is download from Kaggle (https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia), which has been saved in the folder: /figures/, with three folders corresponding to Train, Val, and Test set
-
 
 ### Data Understanding
 
@@ -39,6 +36,7 @@ The data is download from Kaggle (https://www.kaggle.com/datasets/paultimothymoo
 
 I have tried a total of 9 different models with different settings and the results for them are displayed in the following figure:
 ![figure of modelcomp_testlossacc](figures/modelcomp_testlossacc.png)
+
 It seems that the cnnvgg models are slight better, though they are generally similar among all deep learning models.
 #### I chose cnnvgg1 as the final model to see the final classification results
 The confusion matrix is shown below:
