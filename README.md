@@ -38,78 +38,11 @@ The data is download from Kaggle (https://www.kaggle.com/datasets/paultimothymoo
 
 ### Image Classification
 
-#### Frist, I tried a baseline fully connected model with differnt number of layers and number of nodes
-
-
-![figure of model_dense](figures/model_dense.png)
-
-The history is shown below and the accuracy for test data is 83%
-
-![figure of model_dense_hist](figures/model_dense_hist.png)
-
-
-#### Second, I tried CNN model with different settings
-
-
-![figure of model_cnn](figures/model_cnn.png)
-
-The history is shown below and the accuracy for test data is 88%
-
-![figure of model_cnn_hist](figures/model_cnn_hist.png)
-
-##### tried data augmentation
-
-The history is shown below and the accuracy for test data is 88%
-
-![figure of model_cnnda_hist](figures/model_cnnda_hist.png)
-
-##### tried batch normalization
-
-The history is shown below and the accuracy for test data is 90%
-
-![figure of model_cnnbn_hist](figures/model_cnnbn_hist.png)
-
-
-##### tried dropout
-
-The history is shown below and the accuracy for test data is 90%
-
-![figure of model_cnndo_hist](figures/model_cnndo_hist.png)
-
-
-#### Third, I tried a pretained model VGG19 with the combination of above cnn model
-
-![figure of model_cnnvgg0](figures/model_cnnvgg0.png)
-
-The history is shown below and the accuracy for test data is 90%
-
-![figure of model_cnnvgg0_hist](figures/model_cnnvgg0_hist.png)
-
-
-##### Tried to combine vgg19 with a more layers' cnn model
-
-The history is shown below and the accuracy for test data is 91%
-
-![figure of model_cnnvgg1_hist](figures/model_cnnvgg1_hist.png)
-
-##### Tried to use a new data augmentation for two above mentioned vgg19 models
-
-The history of the first model is shown below and the accuracy for test data is 89%
-
-![figure of model_cnnvgg0da2_hist](figures/model_cnnvgg0da2_hist.png)
-
-The history of the second model is shown below and the accuracy for test data is 91%
-
-![figure of model_cnnvgg1da2_hist](figures/model_cnnvgg1da2_hist.png)
-
-
-#### Finally, I do a model comparision across nine models with different settings
-
-The accuracy and loss is shown below:
+I have tried a total of 9 different models with different settings and the results for them are displayed in the following figure:
 
 ![figure of modelcomp_testlossacc](figures/modelcomp_testlossacc.png)
 
-It seems that the cnnvgg models are slight better, though they are generally similar.
+It seems that the cnnvgg models are slight better, though they are generally similar among all deep learning models.
 
 #### I chose cnnvgg1 as the final model to see the final classification results
 
