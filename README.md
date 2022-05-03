@@ -40,6 +40,7 @@ I have tried a total of 9 different models with different settings and the resul
 It seems that the cnnvgg models are slight better, though they are generally similar among all deep learning models.
 #### I chose cnnvgg1 as the final model to see the final classification results
 The confusion matrix is shown below:
+
 ![figure of FinalModel_conf](figures/FinalModel_conf.png)
 
 ## Summary
